@@ -4,6 +4,7 @@ import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import { FaFacebookF } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
+import Link  from "next/link";
 
 
 const ConetenedorLogin = styled.div`
@@ -64,7 +65,7 @@ const ConetenedorLogin = styled.div`
             }
         }
 
-        .enlace-registro{
+        a{
             display: block;
             border-bottom: 2px solid #eee;
             padding: 5px;
@@ -78,11 +79,11 @@ const ConetenedorLogin = styled.div`
 const Login = () => {
 
     const responseGoogle = (response) => {
-        console.log(response);
+        console.log(response.accessToken);
     }
 
     const responseFacebook = ( response ) => {
-        console.log( response );
+        console.log( response.accessToken );
     }
 
     return ( 
@@ -112,7 +113,7 @@ const Login = () => {
                             fields="name,email,picture"
                             callback={responseFacebook} 
                         />
-                        <a className="enlace-registro">Create account with spiceworks</a>
+                        <Link href="/">Create account with spiceworks</Link>
                     </div>
                 </div>
             </ConetenedorLogin>
