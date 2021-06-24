@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from "axios";
 import styled from "@emotion/styled";
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
@@ -85,6 +86,16 @@ const Login = () => {
     const responseFacebook = ( response ) => {
         console.log( response.accessToken );
     }
+
+    useEffect(() => {
+        const consulta = async () => {
+            const url = "http://localhost:4000/usuario";
+
+            const res = await axios(url);
+            console.log(res);
+        }
+        consulta();
+    }, [])
 
     return ( 
         <>
