@@ -7,6 +7,10 @@ import { FaFacebookF } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import Link  from "next/link";
 
+/*Redux */
+import { useSelector, useDispatch } from "react-redux";
+import { ObtenerUsuariosAction  } from "../redux/actions/usuarioAction";
+
 
 const ConetenedorLogin = styled.div`
     max-width: 400px;
@@ -79,6 +83,9 @@ const ConetenedorLogin = styled.div`
 
 const Login = () => {
 
+    const dispatch = useDispatch();
+
+
     const responseGoogle = (response) => {
         console.log(response.accessToken);
     }
@@ -87,15 +94,18 @@ const Login = () => {
         console.log( response.accessToken );
     }
 
-    useEffect(() => {
-        const consulta = async () => {
-            const url = "http://localhost:4000/usuario";
+    useEffect(async() => {
+        /*const url = "http://localhost:4000/usuario";
+        const usuarios = await axios(url);
+        console.log( usuarios );*/
+        const obtenerDatos = () => dispatch( ObtenerUsuariosAction );
+        obtenerDatos();
+    }, []);
 
-            const res = await axios(url);
-            console.log(res);
-        }
-        consulta();
-    }, [])
+    //Obtener el state
+    const usuarios = useSelector( state => state.usuario.usuarios );
+
+    console.log( usuarios );
 
     return ( 
         <>
