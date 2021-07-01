@@ -13,6 +13,6 @@ export default function (state = initialState, action){
                 usuarios: action.payload
             }
         default:
-            return state;
+            return {...state};
     }
 }

@@ -2,6 +2,7 @@ import Head from 'next/head'
 //import Image from 'next/image'
 //import styles from '../styles/Home.module.css'
 import Layouts from "../components/layouts/Layouts";
+import Link from "next/link";
 
 const Home = () => {
   return ( 
@@ -15,7 +16,7 @@ const Home = () => {
 
       <Layouts>
 
-        <p>Cuerpo de pagina principal</p>
+        <Link href="/login">Iniciar sesion</Link>
 
       </Layouts>
 
