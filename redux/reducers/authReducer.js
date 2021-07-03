@@ -1,7 +1,7 @@
 import { OBTENER_USUARIO } from "../../types";
 
 const initialState = {
-    usuarios: null
+    auth: null
 };
 
 export default function (state = initialState, action){
@@ -10,7 +10,7 @@ export default function (state = initialState, action){
         case OBTENER_USUARIO:
             return {
                 ...state,
-                usuarios: action.payload
+                auth: action.payload
             }
         default:
             return {...state};

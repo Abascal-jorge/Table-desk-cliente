@@ -1,13 +1,13 @@
 import { OBTENER_USUARIO  } from "../../types";
 import axios from "axios";
 
-export function ObtenerUsuariosAction() {
+export function AuthenticationAction() {
     return async (dispatch) => {
         //dispatch( obtenerUsuarios() );
         try {
             const url = "http://localhost:4000/usuario";
-            const usuarios = await axios(url);
-            dispatch( obtenerUsuarios( usuarios.data.usuario ) );
+            const auth = await axios(url);
+            dispatch( obtenerAuthentication( auth.data.usuario ) );
         } catch (error) {
             console.log(error);
             //Creamos un distpatch de error
@@ -17,7 +17,7 @@ export function ObtenerUsuariosAction() {
 }
 
 
-const obtenerUsuarios = ( usuarios ) => ({
+const obtenerAuthentication = ( auth ) => ({
     type: OBTENER_USUARIO,
-    payload: usuarios
+    payload: auth
 });

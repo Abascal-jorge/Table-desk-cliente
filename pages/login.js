@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import { FaFacebookF } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import Link  from "next/link";
-import ConetenedorLogin from "../components/login/loginStyle";
+import { ContenedorFormulario, FormLogin, RegistroSocial } from "../components/login/loginStyle";
 /*Redux */
 import { connect } from "react-redux";
-import { ObtenerUsuariosAction  } from "../redux/actions/usuarioAction";
+import { AuthenticationAction } from "../redux/actions/authAction";
 
 const Login = (props) => {
 
-
+    const { auth } = props.userInfo;
     const responseGoogle = (response) => {
         console.log(response.accessToken);
     }
@@ -21,23 +21,27 @@ const Login = (props) => {
     }
 
     useEffect(async() => {
-        props.ObtenerUsuariosAction();
-        console.log(props.userInfo);
+        props.AuthenticationAction();
+         
+        console.log( props.userInfo );
     }, []);
 
     return ( 
         <>
 
-            <ConetenedorLogin>
+            <ContenedorFormulario>
                 <div className="contenedor-login">
+                    { auth.length > 0 &&
+                        <p>{auth[0].nombre}</p>
+                    }
                     <h2>Log in to table helk</h2>
-                    <form>
+                    <FormLogin>
                         <input placeholder="Email Address" required type="email"></input>
                         <input placeholder="Password" required type="password"></input>
                         <label>Forgot your password?</label>
                         <input type="submit" value="Log in"></input>
-                    </form>
-                    <div className="registro-social">
+                    </FormLogin>
+                    <RegistroSocial>
                         <h3 className="title-social">Or Connect with  <FaFacebookF/>  <FcGoogle/></h3>
                         <GoogleLogin
                             clientId="102173154229-ngr547l49iedr4fsikjcejjbneuk9a1j.apps.googleusercontent.com"
@@ -53,21 +57,21 @@ const Login = (props) => {
                             callback={responseFacebook} 
                         />
                         <Link href="/crearCuenta">Create account with spiceworks</Link>
-                    </div>
+                    </RegistroSocial>
                 </div>
-            </ConetenedorLogin>
+            </ContenedorFormulario>
         </>
     );
 }
 
 //esta funcion ayuda a traer el state del reducer specificado
 const mapStateToProps = state => ({
-    userInfo: state.usuario
+    userInfo: state.auth
 })
   
 //Esta funcion ayuda a traer la funcion del action a este page
 const mapDispatchToProps = {
-    ObtenerUsuariosAction
+    AuthenticationAction
 }
 
 
