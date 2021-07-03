@@ -1,13 +1,16 @@
-import { OBTENER_USUARIO  } from "../../types";
-import axios from "axios";
+import { OBTENER_USUARIO, NEW_USUARIO  } from "../../types";
+import clienteAxios from "../../config/axios";
 
-export function AuthenticationAction() {
+
+/*Creando usuario*/
+export function newUsuarioAction( datos ) {
     return async (dispatch) => {
         //dispatch( obtenerUsuarios() );
         try {
-            const url = "http://localhost:4000/usuario";
-            const auth = await axios(url);
-            dispatch( obtenerAuthentication( auth.data.usuario ) );
+            
+            const auth = await clienteAxios.post("/usuario", datos);
+            console.log(auth);
+            dispatch( crearUsuario( true ) );
         } catch (error) {
             console.log(error);
             //Creamos un distpatch de error
@@ -17,7 +20,7 @@ export function AuthenticationAction() {
 }
 
 
-const obtenerAuthentication = ( auth ) => ({
-    type: OBTENER_USUARIO,
-    payload: auth
+const crearUsuario = ( user ) => ({
+    type: NEW_USUARIO,
+    payload: user
 });

@@ -1,7 +1,9 @@
-import { OBTENER_USUARIO } from "../../types";
+import { OBTENER_USUARIO,
+         NEW_USUARIO } from "../../types";
 
 const initialState = {
-    auth: null
+    auth: null,
+    newUsuario: false
 };
 
 export default function (state = initialState, action){
@@ -11,6 +13,11 @@ export default function (state = initialState, action){
             return {
                 ...state,
                 auth: action.payload
+            }
+        case NEW_USUARIO:
+            return {
+                ...state,
+                newUsuario: true
             }
         default:
             return {...state};

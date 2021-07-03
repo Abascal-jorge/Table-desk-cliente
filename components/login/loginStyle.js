@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 
-
 export const ContenedorFormulario = styled.div`
     max-width: 400px;
     margin: 100px auto;
@@ -11,7 +10,7 @@ export const ContenedorFormulario = styled.div`
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,.5);
 
     @media(min-width: 780px){
-        margin: 20vh auto 0 auto;
+        margin: 10vh auto 0 auto;
     }
 `;
 
