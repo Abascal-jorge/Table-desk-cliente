@@ -16,11 +16,9 @@ const Home = () => {
 
       <Layouts>
 
-        <Link href="/login">Iniciar sesion</Link>
+          <Link href="/login">Iniciar sesion</Link>
 
       </Layouts>
-
-
     </div>
   );
 }

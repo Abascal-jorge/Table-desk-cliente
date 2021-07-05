@@ -1,5 +1,6 @@
 import { OBTENER_USUARIO,
-         NEW_USUARIO } from "../../types";
+         NEW_USUARIO,
+         QUITAR_MENSAJE } from "../../types";
 
 const initialState = {
     auth: null,
@@ -18,6 +19,11 @@ export default function (state = initialState, action){
             return {
                 ...state,
                 newUsuario: true
+            }
+        case QUITAR_MENSAJE:
+            return{
+                ...state,
+                newUsuario: false
             }
         default:
             return {...state};

@@ -1,5 +1,7 @@
-import { OBTENER_USUARIO, NEW_USUARIO  } from "../../types";
+import { OBTENER_USUARIO, NEW_USUARIO, QUITAR_MENSAJE  } from "../../types";
 import clienteAxios from "../../config/axios";
+import Swal from 'sweetalert2';
+//import 'sweetalert2/src/sweetalert2.scss';
 
 
 /*Creando usuario*/
@@ -24,3 +26,19 @@ const crearUsuario = ( user ) => ({
     type: NEW_USUARIO,
     payload: user
 });
+
+
+export function quitarMensaje(){
+    return (distpach) => {
+        Swal.fire({
+            title: 'Usuario creado',
+            text: 'Usuario creado con existo!!',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        })
+        distpach({
+            type: QUITAR_MENSAJE,
+            payload: false
+        })
+    }
+}

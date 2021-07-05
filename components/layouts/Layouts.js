@@ -1,19 +1,20 @@
 import React from 'react';
+import Header from "../menu/header";
+import Footer from "../menu/footer";
 
 
 const Layouts = ( { children } ) => {
     return ( 
-        <>
-              <h1>Hola mundo</h1>
+              <div className="cuerpo-pagina">
+                  <Header/>
+
+                  <main>
+                    { children }    
+                  </main>  
 
 
-              <main>
-                { children }    
-              </main>  
-
-
-              <p>Pie de pagina</p>
-        </>
+                  <Footer/>
+              </div>
      );
 }
  

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormRegistro } from "./loginStyle";
 import { connect } from "react-redux";
-import { newUsuarioAction } from "../../redux/actions/authAction";
+import { newUsuarioAction, quitarMensaje } from "../../redux/actions/authAction";
 import { useRouter } from 'next/router';
 
 const Registro = (props) => {
@@ -14,7 +14,7 @@ const Registro = (props) => {
     });
 
     //Funcion submit
-    const onSubmitDatos = e => {
+    const onSubmitDatos = async e => {
         e.preventDefault();
 
         //Verifica que todos los elementos del objeto no esten vacios si estan vacios termina la ejecucion
@@ -22,7 +22,9 @@ const Registro = (props) => {
             return;
         }
 
-        props.newUsuarioAction(datos);
+        await props.newUsuarioAction(datos);
+
+        props.quitarMensaje();
 
         router.push("/");
     }
@@ -61,7 +63,8 @@ const mapStateToProps = state => ({
   
 //Esta funcion ayuda a traer la funcion del action a este page
 const mapDispatchToProps = {
-    newUsuarioAction
+    newUsuarioAction,
+    quitarMensaje
 }
 
  

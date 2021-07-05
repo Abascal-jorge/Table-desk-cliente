@@ -15,8 +15,27 @@ a {
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 .wrapper{
   padding: 0 10px;
+}
+
+.contenedor{
+  max-width: 1366px;
+  margin: 0 auto;
+}
+
+
+/*Pagina layouts*/
+.cuerpo-pagina{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.cuerpo-pagina main{
+  flex: 1;
 }
