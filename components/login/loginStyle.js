@@ -31,6 +31,14 @@ export const FormLogin = styled.form`
 
 export const FormRegistro = styled.form`
     margin-bottom: 10px;
+    p{
+        color: white;
+        padding: 10px;
+        margin: 5px 0;
+        background-color: red;
+        border-radius: 6px;
+        text-align: center;
+    }
     .campos-items{
         display: flex;
         flex-direction: column;
@@ -52,6 +60,9 @@ export const FormRegistro = styled.form`
         border-radius: 8px;
         background-color: #91D9F0;
         border: none;
+        &:hover{
+            background-color: #35ABD1;
+        }
     }
 `; 
 

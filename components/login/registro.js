@@ -12,6 +12,7 @@ const Registro = (props) => {
         correo: "",
         rol: "USER_ROLE"
     });
+    const [error, setError] = useState(false);
 
     //Funcion submit
     const onSubmitDatos = async e => {
@@ -19,9 +20,10 @@ const Registro = (props) => {
 
         //Verifica que todos los elementos del objeto no esten vacios si estan vacios termina la ejecucion
         if( !Object.values(datos).every( items => items !== "") ){
+            setError(true);
             return;
         }
-
+        setError(false);
         await props.newUsuarioAction(datos);
 
         props.quitarMensaje();
@@ -39,6 +41,7 @@ const Registro = (props) => {
 
     return ( 
         <FormRegistro onSubmit={onSubmitDatos}>
+            { error && <p>Todos los campos son obligatorios</p>}
             <div className="campos-items">
                 <label>Nombre</label>
                 <input type="text" name="nombre" value={datos.nombre} onChange={llenarDatos} placeholder="Ingresa tu nombre"></input>
