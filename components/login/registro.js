@@ -21,6 +21,9 @@ const Registro = (props) => {
         //Verifica que todos los elementos del objeto no esten vacios si estan vacios termina la ejecucion
         if( !Object.values(datos).every( items => items !== "") ){
             setError(true);
+            setTimeout(() => {
+                setError(false);
+            }, 3000);
             return;
         }
         setError(false);

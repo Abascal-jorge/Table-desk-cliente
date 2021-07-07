@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 //import 'sweetalert2/src/sweetalert2.scss';
 
 
-/*Creando usuario*/
+/*Creando usuario conb correo y contrasela*/
 export function newUsuarioAction( datos ) {
     return async (dispatch) => {
         //dispatch( obtenerUsuarios() );
@@ -42,3 +42,6 @@ export function quitarMensaje(){
         })
     }
 }
+
+
+/* Authentificacion de usuarios */
